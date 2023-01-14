@@ -1,0 +1,53 @@
+<ng-container *ngIf="veges.length">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr. No</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>StoreName</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let vege of veges; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{vege.name}}</td>
+                            <td><img src="{{vege.image}}"></td>
+                            <td>{{vege.stores}}</td>
+                            <td>{{vege.price | currency:'INR'}}</td>
+                            <td><input type="number" [(ngModel)]="vege.qty"></td>
+                            <td>
+                                <button class="btn btn-danger">
+    
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="veges.length==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">
+                My Cart
+            </h5>
+        </div>
+        <div class="center">
+            <img src="../../assets/images/emptycart.svg" alt="">
+            <h4>Your cart is empty!</h4>
+            <h6>Looks like you have not added anything to your cart. Go ahead & explore top categories.</h6>
+            <button routerLink="/veges" class="btn btn-primary">Shop now</button>
+        </div>
+    </div>
+</ng-container>

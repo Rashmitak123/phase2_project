@@ -1,0 +1,47 @@
+<div class="card1">
+    <div class="card-body">
+    <div class="form-group">
+        <input type="text" class="form-control" 
+            placeholder="search product" (keypress)="filterData(filterValue)"  
+            [(ngModel)]="filterValue"/>
+    </div>
+    <!-- <div>
+        <i class="bi bi-search search-icon"></i>
+    </div> -->
+    
+    </div>
+    </div>
+
+
+     <div class="container">
+        <div class="row">
+            <ng-container *ngFor="let vege of filteredVeges;let i = index">
+                <div class="card col-md-3">
+                    <img [src]='vege.image' alt="">
+                    <h5 (click)="vegeSelected(vege)" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:10ch;">{{vege.name}}</h5>
+                    <p style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100ch;">
+                        Lorem ipsum dolor sit amet consectetur 
+                        adipisicing elit. Quam, at necessitatibus eos 
+                        dicta provident sequi officiis, est debitis 
+                        iusto sit eaque ducimus alias amet dolore 
+                        exercitationem excepturi non consequuntur culpa?
+                    </p>
+                    <p>{{vege.stores}}</p>
+                    <p><strong>Price:</strong>{{vege.price|currency:'INR'}}</p>
+                    <!-- <button class="btn btn-primary" (click)="addtocart(vege)">Add to cart</button> -->
+                    <button class="btn btn-primary">Add to cart</button>
+                </div>
+
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="card-footer">
+      <div class="col-md-4 text-right">
+        <button class="btn btn-primary"
+        (click)="newVege()">Veges Management</button>
+      </div>
+    </div>
+ {{errorMessage$  | async}}
+
+<router-outlet></router-outlet>

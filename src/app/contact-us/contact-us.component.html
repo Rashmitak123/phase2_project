@@ -1,0 +1,51 @@
+
+
+  <div class="card text-center">
+    <div class="card-header">
+      Contact Us
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Help Center</h5>
+      <p class="card-text">Please get in touch and we will be happy to help you</p>
+      <img src="../../assets/images/help.png">
+    </div>
+    <div class="card-body">
+        <h6 class="card-text">Need Help With Recent Purchases?</h6>
+     
+        <form [formGroup]="form" (ngSubmit)="saveDetails(form)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Robert" formControlName="name">
+              </div>
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" placeholder="name@gmail.com" formControlName="email">
+            </div>
+            <div class="form-group">
+              <label for="store">Store Name</label>
+              <select class="form-control" id="store" placeholder="select store name" formControlName="store">
+                <option>store 1</option>
+                <option>store 2</option>
+                <option>store 3</option>
+                <option>store 4</option>
+                <option>store 5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="comment">Comments</label>
+              <textarea class="form-control" id="comment" rows="3" placeholder="write your comments...." formControlName="comment"></textarea>
+            </div>
+            <button class="btn btn-outline-light" style="margin-bottom:10px;">Submit</button>
+          </form>
+         
+</div>
+    <div class="card-body">
+        <h5 class="card-text">Recent Queries</h5>
+        <p class="card-title">There are no recent queries raised in Last 30 Days</p>
+        <button class="btn btn-light" style="border:1px solid black">SHOW OLDER QUERIES</button>
+    </div>
+    <div class="card-footer text-muted">
+      <p class="card-title">Want to reach us the old way?</p>
+      <h6 style="color:blueviolet">POSTAL ADDRESS</h6>
+    </div>
+  </div>
