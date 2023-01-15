@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { vegeReducer } from '../state/veges/veges.reducer';
 import { VegeEffects } from '../state/veges/veges.effects';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,FormsModule,ReactiveFormsModule,
     VegesRoutingModule,
     StoreModule.forFeature('veges', vegeReducer),
-    EffectsModule.forFeature([VegeEffects])
+    EffectsModule.forFeature([VegeEffects]),
+    Ng2SearchPipeModule,
 ],  
 })
 

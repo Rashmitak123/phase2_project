@@ -26,10 +26,12 @@ import { AppEffects } from './app.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CategoryComponent } from './category/category.component';
-import { CartComponent } from './cart/cart.component';
+//import { CartComponent } from './cart/cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RequestRespInterceptor } from './user/auth.interceptor';
+//import { FilterPipe } from './filter.pipe';
+//import { Ng2SearchPipeModule } from 'ng2-search-filter';
 //import { VegesAddComponent } from './veges/veges-add.component';
 
 @NgModule({
@@ -43,8 +45,9 @@ import { RequestRespInterceptor } from './user/auth.interceptor';
     LoginComponent,
     HomeComponent,
     CategoryComponent,
-    CartComponent,
+ //   CartComponent,
     PageNotFoundComponent,
+ //   FilterPipe,
  //   VegesComponent,
  //   VegesAddComponent
   ],
@@ -64,7 +67,8 @@ import { RequestRespInterceptor } from './user/auth.interceptor';
     HttpClientInMemoryWebApiModule.forRoot(InMemoryEventDbService),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([AppEffects]),
-    StoreDevtoolsModule.instrument(),  
+    StoreDevtoolsModule.instrument(), 
+   // Ng2SearchPipeModule, 
   ],
 
   providers: [

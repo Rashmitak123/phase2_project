@@ -1,53 +1,60 @@
-import { Injectable, OnInit } from '@angular/core';
-import { IVeges, Stores } from 'src/app/veges/veges'
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
+import { IVeges } from "src/app/veges/veges";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
-export class CartService implements OnInit{
 
-  public cartItemList:any =[]
+export class CartService{
+    cart: IVeges[]=[];
+    private vegeList=new BehaviorSubject<IVeges[]>([]);
+    constructor(private http:HttpClient){}
+    url="api/cart";
 
-  public vegeList=new BehaviorSubject<any>([]);
-  constructor() { }
+    getVeges(){
+        return this.vegeList.asObservable();
+    }  
 
-ngOnInit(): void {
-  
-}
-  getVeges(){
-    return this.vegeList.asObservable();
-  }
+    setVeges(veges:IVeges[]){
+      this.cart.push(...veges);
+      this.vegeList.next(veges);
+    }
 
-   setVeges(vege:any){
-    this.cartItemList.push(...vege);
-    this.vegeList.next(vege);
-  } 
+    addtoCart(vege:IVeges){
+        this.cart.push(vege);
+        this.vegeList.next(this.cart);
+        this.getTotalPrice();
+        console.log(this.cart);
+    }
 
-  addtoCart(vege:any){
-    this.cartItemList.push(vege);
-    this.vegeList.next(this.cartItemList);
-    this.getTotalPrice();
-    console.log(this.cartItemList);
-  }
+    deleteCart(vege:IVeges){
+        const id=vege.id;
+        const comIndex=this.cart.findIndex(item=>item.id===id);
+        if(comIndex >-1){
+            this.cart.splice(comIndex,1);
+        }
+    }
 
-  getTotalPrice():number{
-    let grandTotal=0;
-    this.cartItemList.map((a:any)=>{
-      grandTotal+=a.total;
-    })
-    return grandTotal;
-  }
-  removeCartItem(vege:any){
-    this.cartItemList.map((a:any, index:any)=>{
-      if(vege.id===a.id){
-        this.cartItemList.splice(index, 1);
-      }
-    })
-  }
+    getTotalPrice():number{
+      let grandTotal=0;
+      this.cart.map((c:IVeges)=>{
+      //grandTotal+=c.total;
+      })
+      return grandTotal;
+    }
 
-  removeAllCart(){
-    this.cartItemList=[]
-    this.vegeList.next(this.cartItemList);
-  }
+    removeCartItem(vege:IVeges){
+      this.cart.map((a:IVeges, index:any)=>{
+        if(vege.id===a.id){
+          this.cart.splice(index,1);
+        }
+      })
+    }
+
+    removeAllCart(){
+      this.cart=[];
+      this.vegeList.next(this.cart);
+    }
 }

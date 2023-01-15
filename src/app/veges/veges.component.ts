@@ -7,7 +7,8 @@ import { Observable, Subscription } from 'rxjs';
 import { VegesService } from 'src/shared/veges.service';
 import { IVeges } from './veges';
 import { getCurrentVege, getError, getVeges } from '../state/veges/veges.selectors';
-import * as VegeActions from 'src/app/state/veges/veges.actions'
+import * as VegeActions from 'src/app/state/veges/veges.actions';
+import { CartService } from 'src/shared/cart.service';
 //import { CartService } from 'src/shared/cart.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class VegesComponent implements OnInit, OnDestroy{
   veges: IVeges[]=[];
   filteredVeges: IVeges[]=[];
   selectedVeges!: IVeges | null;
-  filterValue!: string;
+  filterValue:any;
   href: string='';
 
   veges$!:Observable<IVeges[]>;
@@ -33,13 +34,13 @@ export class VegesComponent implements OnInit, OnDestroy{
   dataReceived=this.vegeService.getVeges();
   obsVeges$!: Observable<IVeges>;
 
-  // constructor(private vegeService:VegesService,
-  //       private cartService:CartService,
-  //       private router:Router,
-  //       private store:Store<State>){}
-  constructor(private vegeService:VegesService,
+   constructor(private vegeService:VegesService,
+         private cartService:CartService,
+         private router:Router,
+         private store:Store<State>){}
+  /* constructor(private vegeService:VegesService,
     private router:Router,
-    private store:Store<State>){}
+    private store:Store<State>){} */
   
   ngOnInit(): void {
     this.href=this.router.url;
@@ -49,7 +50,7 @@ export class VegesComponent implements OnInit, OnDestroy{
     this.errorMessage$=this.store.select(getError);
     this.store.dispatch(VegeActions.loadVeges());
     this.selectedVeges$=this.store.select(getCurrentVege);
-
+    this.filteredVeges=this.veges;
    /*  this.filteredVeges.forEach((a:any)=>{
       Object.assign(a,{qty:1, total:a.price});
     }); */
@@ -59,9 +60,7 @@ export class VegesComponent implements OnInit, OnDestroy{
     
   }
 
-  filterData(val:string){
-    this.filteredVeges=this.veges.filter((v)=>v.stores===val);
-  }
+   
 
   newVege():void{
     //back to new veggie from service
@@ -81,4 +80,13 @@ export class VegesComponent implements OnInit, OnDestroy{
   /* addtocart(item:IVeges){
     this.cartService.addtoCart(item);
   } */
+
+  addtocart(item: IVeges){
+
+    this.cartService.addtoCart(item);
+    //this.router.navigate([this.href,'shopCart']);
+
+  }
+
+
 }

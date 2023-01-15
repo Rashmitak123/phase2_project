@@ -14,7 +14,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   {path:'',pathMatch:'full', redirectTo:'home'},
   {path:'home', component: MainHomeComponent},
-  {path:'cart', component:CartComponent},
+   {
+    path:'cart', 
+    component:CartComponent,
+    loadChildren:()=>import('./cart/cart.module').then(m=>m.CartsModule)
+  }, 
   {path:'login', component:LoginComponent},
   {path:'contact-us', component:ContactUsComponent},
   {path:'about-us', component:AboutUsComponent},

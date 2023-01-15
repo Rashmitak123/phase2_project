@@ -32,10 +32,6 @@ export class AuthService{
 
   }
     login(username:string,password:string):void{
-
-     //service which connect to back end api to validate the user
-
-  //  //setting the currentUser
    //console.log(JSON.stringify(this.currentUser));
 
     // this.validateUser({userName:userName,password:password});
@@ -45,7 +41,6 @@ export class AuthService{
       console.log('validating the user',user)
       user={...user};
       this.foundIndex=users.findIndex(u=>(u.username==user.username && u.password == user.password));
-    
       console.log('found index ',this.foundIndex)
       if(this.foundIndex > -1){
 

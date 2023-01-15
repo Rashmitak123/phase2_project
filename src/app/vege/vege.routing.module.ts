@@ -9,7 +9,7 @@ const vegeRoutes: Routes = [
   {
     path: 'addVege', 
     component: VegesAddComponent,
-    canActivate:[AuthGuard]
+ //   canActivate:[AuthGuard]
 },
 
 ];

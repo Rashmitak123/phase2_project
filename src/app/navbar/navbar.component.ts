@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../user/auth.service';
-//import { CartService } from '../../shared/cart.service'
+import { CartService } from '../../shared/cart.service'
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +12,9 @@ export class NavbarComponent implements OnInit{
   
   isLoggedIn:boolean=false;
   pageTitle:string='InstaSMart ';
-  constructor(private router:Router,private authservice:AuthService){
+  constructor(private router:Router,
+      private authservice:AuthService,
+      private cartService:CartService){
   console.log('menu constructor')
 }
   
@@ -25,10 +27,10 @@ export class NavbarComponent implements OnInit{
   public totalItem:number=0;
   
     ngOnInit(): void {
-     /*  this.cartService.getVeges()
+       this.cartService.getVeges()
         .subscribe(res=>{
           this.totalItem=res.length;
-        })  */ 
+        })  
         console.log('menu on init');
         this.isLoggedIn=this.authservice.isLoggedIn;
          if(sessionStorage.getItem('isLogged')==='true'){

@@ -2,7 +2,7 @@
     <div class="card-body">
     <div class="form-group">
         <input type="text" class="form-control" 
-            placeholder="search product" (keypress)="filterData(filterValue)"  
+            placeholder="Search veggie" 
             [(ngModel)]="filterValue"/>
     </div>
     <!-- <div>
@@ -15,7 +15,7 @@
 
      <div class="container">
         <div class="row">
-            <ng-container *ngFor="let vege of filteredVeges;let i = index">
+            <ng-container *ngFor="let vege of filteredVeges | filter: filterValue">
                 <div class="card col-md-3">
                     <img [src]='vege.image' alt="">
                     <h5 (click)="vegeSelected(vege)" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:10ch;">{{vege.name}}</h5>
@@ -28,8 +28,8 @@
                     </p>
                     <p>{{vege.stores}}</p>
                     <p><strong>Price:</strong>{{vege.price|currency:'INR'}}</p>
-                    <!-- <button class="btn btn-primary" (click)="addtocart(vege)">Add to cart</button> -->
-                    <button class="btn btn-primary">Add to cart</button>
+                     <button class="btn btn-primary" (click)="addtocart(vege)">Add to cart</button> 
+                    <!-- <button class="btn btn-primary">Add to cart</button> -->
                 </div>
 
             </ng-container>
