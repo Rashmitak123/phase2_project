@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { VegesComponent } from './veges.component';
 
@@ -7,7 +8,8 @@ describe('VegesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VegesComponent ]
+      declarations: [ VegesComponent ],
+      imports:[HttpClientModule]
     })
     .compileComponents();
 

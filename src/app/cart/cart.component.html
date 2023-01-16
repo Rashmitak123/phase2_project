@@ -1,4 +1,4 @@
-<ng-container *ngIf="veges.length">
+<ng-container *ngIf="veges.length !=0">
     <div class="container">
         <div class="card-table">
             <div class="cart-product">
@@ -9,8 +9,8 @@
                             <th>Product Name</th>
                             <th>Product Image</th>
                             <th>StoreName</th>
+                            <th>Quantity</th>
                             <th>Price</th>
-                            <!-- <th>Quantity</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -20,19 +20,23 @@
                             <td>{{vege.name}}</td>
                             <td><img src="{{vege.image}}"></td>
                             <td>{{vege.stores}}</td>
+                            <td>{{vege.qty}}</td>
                             <td>{{vege.price | currency:'INR'}}</td>
                             <!-- <td><input type="number" [(ngModel)]="vege.qty" style="width: 40px;"></td> -->
                             <td>
-                                <button class="btn btn-danger"  (click)="deleteCart(vege)">Remove</button>
+                                <button class="btn btn-danger"  (click)="deleteItem(vege)">Remove</button>
                             </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td><button class="btn btn-danger"  (click)="emptycart()">Empty</button></td>
+                            <td><button class="btn btn-primary"  routerLink="/veges">Shop More</button></td>
+                            <td><button class="btn btn-success"  routerLink="/payment">Check out</button></td>
+                            <td><strong>Grand Total : {{grandTotal | currency:'INR'}}</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-        <br>
-        <div class="empty">
-            <button class="btn btn-danger"  (click)="emptycart()">Empty</button>
         </div>
     </div>
 </ng-container>

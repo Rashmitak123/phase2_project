@@ -15,7 +15,7 @@ export class InMemoryEventDbService implements InMemoryDbService{
         "price":10,
         "stores":Stores.store1,
         "image":"../../assets/images/tomato.jfif",
-        "qty":0
+        "qty":1
        },
       {
         "id":112,
@@ -23,7 +23,7 @@ export class InMemoryEventDbService implements InMemoryDbService{
         "price":30,
         "stores":Stores.store4,
         "image":"../../assets/images/potato.jpg",
-        "qty":0
+        "qty":1
     },
     {
         "id":113,
@@ -31,7 +31,7 @@ export class InMemoryEventDbService implements InMemoryDbService{
         "price":35,
         "stores":Stores.store3,
         "image":"../../assets/images/carrot.jfif",
-        "qty":0
+        "qty":1
     },
     {
         "id":114,
@@ -39,7 +39,7 @@ export class InMemoryEventDbService implements InMemoryDbService{
         "price":80,
         "stores":Stores.store5,
         "image":"../../assets/images/brocolli.jpg",
-        "qty":0
+        "qty":1
     },
     {
         "id":115,
@@ -47,7 +47,7 @@ export class InMemoryEventDbService implements InMemoryDbService{
         "price":20,
         "stores":Stores.store1,
         "image":"../../assets/images/cauliflower.jfif",
-        "qty":0
+        "qty":1
     },
     {
         "id":116,
@@ -55,7 +55,7 @@ export class InMemoryEventDbService implements InMemoryDbService{
         "price":40,
         "stores":Stores.store4,
         "image":"../../assets/images/corn.jpg",
-        "qty":0
+        "qty":1
     },
     {
         "id":117,
@@ -63,26 +63,26 @@ export class InMemoryEventDbService implements InMemoryDbService{
         "price":50,
         "stores":Stores.store2,
         "image":"../../assets/images/cucumber.jpeg",
-        "qty":0
+        "qty":1
     }];
 
     const users:User[]=[{ 
         id:1,
-        username:'admin',
+        userName:'admin',
         password:'admin',
         isAdmin:true
       },
 
         { 
           id:2,
-          username:'rashmi',
+          userName:'rashmi',
           password:'rashmi',
           isAdmin:false
         },
 
           { 
             id:3,
-            username:'dev',
+            userName:'dev',
             password:'dev',
             isAdmin:false
         }];

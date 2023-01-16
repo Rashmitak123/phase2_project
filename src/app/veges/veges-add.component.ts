@@ -9,6 +9,7 @@ import { Observable, Subscription, tap } from 'rxjs';
 import { GenericValidator } from 'src/shared/genericvalidator';
 import { Stores, IVeges } from './veges';
 import * as VegeActions from '../state/veges/veges.actions'
+import { VegesService } from 'src/shared/veges.service';
 
 @Component({
   selector: 'app-veges-add',
@@ -29,7 +30,8 @@ export class VegesAddComponent implements OnInit, OnDestroy {
 
     constructor(private store:Store<State>,
               private formBuilder: FormBuilder,
-              private router: Router ) {
+              private router: Router,
+              private vegeService:VegesService ) {
 
       this.validationMessages={
       name:{

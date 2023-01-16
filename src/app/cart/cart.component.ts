@@ -1,27 +1,3 @@
-/* import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { CartService } from '../../shared/cart.service';
-import { IVeges } from '../veges/veges';
-
-@Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
-})
-export class CartComponent implements OnInit, OnChanges{
-@Input() veges:IVeges[]=[];
-constructor(){}
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('in onchanges')
-    this.veges.forEach((e)=>console.log(e.name));
-  }
-
-ngOnInit(): void{
- 
-}
-}
- */
-
-
 
 
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
@@ -49,15 +25,15 @@ export class CartComponent implements OnInit{
  // this.veges=this.cartService.getVeges();
   }
 
-   removeItem(item: IVeges){
+  /*  removeItem(item: IVeges){
     this.cartService.removeCartItem(item);
-  }
+  } */
 
   emptycart(){
-    this.cartService.removeAllCart();
+    this.cartService.emptyCart();
   } 
 
-  deleteCart(item:IVeges){
-    this.cartService.deleteCart(item);
+  deleteItem(item:IVeges){
+    this.cartService.removeCartItem(item);
   }
 }

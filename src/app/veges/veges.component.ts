@@ -51,9 +51,7 @@ export class VegesComponent implements OnInit, OnDestroy{
     this.store.dispatch(VegeActions.loadVeges());
     this.selectedVeges$=this.store.select(getCurrentVege);
     this.filteredVeges=this.veges;
-   /*  this.filteredVeges.forEach((a:any)=>{
-      Object.assign(a,{qty:1, total:a.price});
-    }); */
+      
   }
 
   ngOnDestroy(): void {

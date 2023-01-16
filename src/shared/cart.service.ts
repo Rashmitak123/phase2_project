@@ -13,12 +13,15 @@ export class CartService{
     constructor(private http:HttpClient){}
     url="api/cart";
 
+    //getter, getting veges data
     getVeges(){
         return this.vegeList.asObservable();
     }  
 
+    //setter, push veges
     setVeges(veges:IVeges[]){
       this.cart.push(...veges);
+      //emit value whichever present in veges
       this.vegeList.next(veges);
     }
 
@@ -29,21 +32,13 @@ export class CartService{
         console.log(this.cart);
     }
 
-    deleteCart(vege:IVeges){
+   /*  deleteItem(vege:IVeges){
         const id=vege.id;
         const comIndex=this.cart.findIndex(item=>item.id===id);
         if(comIndex >-1){
             this.cart.splice(comIndex,1);
         }
-    }
-
-    getTotalPrice():number{
-      let grandTotal=0;
-      this.cart.map((c:IVeges)=>{
-      //grandTotal+=c.total;
-      })
-      return grandTotal;
-    }
+    } */
 
     removeCartItem(vege:IVeges){
       this.cart.map((a:IVeges, index:any)=>{
@@ -51,10 +46,19 @@ export class CartService{
           this.cart.splice(index,1);
         }
       })
-    }
-
-    removeAllCart(){
+      this.vegeList.next(this.cart);
+    } 
+ 
+    emptyCart(){
       this.cart=[];
       this.vegeList.next(this.cart);
+    }
+
+    getTotalPrice():number{
+      let grandTotal=0;
+      this.cart.map((c:IVeges)=>{
+        grandTotal+=c.price;
+      })
+      return grandTotal;
     }
 }

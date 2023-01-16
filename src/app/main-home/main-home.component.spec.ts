@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MainHomeComponent } from './main-home.component';
 
@@ -8,7 +9,8 @@ describe('MainHomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainHomeComponent ]
+      declarations: [ MainHomeComponent ],
+      imports: [NgbCarouselModule]
     })
     .compileComponents();
 

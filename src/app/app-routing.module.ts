@@ -10,6 +10,7 @@ import { AuthGuard } from './user/auth-guard.service';
 import { VegesComponent } from './veges/veges.component';
 import { CartComponent } from './cart/cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {path:'',pathMatch:'full', redirectTo:'home'},
@@ -30,6 +31,11 @@ const routes: Routes = [
     loadChildren:()=>import('../app/vege/vege.module').then(m=>m.VegesModule)
   },
 
+  {
+    path: 'payment', 
+    component:PaymentComponent,
+    canActivate:[AuthGuard]
+  },
   {path:'**', component:PageNotFoundComponent}
 ];
 

@@ -18,12 +18,12 @@ export class NavbarComponent implements OnInit{
   console.log('menu constructor')
 }
   
-  get username():string{
+  get userName():string{
     if(this.authservice.currentUser)
-    return this.authservice.currentUser?.username;
+    return this.authservice.currentUser?.userName;
     return '';
   }
-
+ 
   public totalItem:number=0;
   
     ngOnInit(): void {

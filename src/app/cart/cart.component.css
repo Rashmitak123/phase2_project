@@ -28,9 +28,9 @@
     padding: 12px 72px;
     border-radius: 3px !important;
 }
-thead, tbody{
-    width: 1200px;
-}
+thead, tbody > * {
+    width: 100%;
+  }
 
 img{
     width: 100px;
