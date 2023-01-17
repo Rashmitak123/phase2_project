@@ -31,12 +31,13 @@ export class NavbarComponent implements OnInit{
         .subscribe(res=>{
           this.totalItem=res.length;
         })  
+        
         console.log('menu on init');
         this.isLoggedIn=this.authservice.isLoggedIn;
          if(sessionStorage.getItem('isLogged')==='true'){
           this.isLoggedIn=true;
         } 
-        console.log(this.isLoggedIn, 'from init of navbar ') 
+        console.log(this.isLoggedIn, 'from init of navbar') 
     }
   
     logOut():void{

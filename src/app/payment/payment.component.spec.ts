@@ -1,5 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideMockStore } from '@ngrx/store/testing';
 import { PaymentComponent } from './payment.component';
 
 describe('PaymentComponent', () => {
@@ -8,7 +10,11 @@ describe('PaymentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaymentComponent ]
+      declarations: [ PaymentComponent ],
+      imports: [FormsModule,
+              HttpClientTestingModule,
+              ReactiveFormsModule],
+      providers: [provideMockStore({})]
     })
     .compileComponents();
 

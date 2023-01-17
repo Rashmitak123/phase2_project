@@ -43,13 +43,13 @@
         <input (blur)="blur()" type="text" formControlName="image"
         placeholder="Product image" name="image" class="form-control" id="image">
       </div>
-
+    <div class="btns2">
       <button class="btn btn-primary" type="button"
       (click)="deleteVege(vege)">Delete Veggie</button>
-
+        &nbsp;
       <button [disabled]='!addVege.valid ||!addVege.dirty' 
       class="btn btn-primary">Save Veggie</button>
-    
+    </div>  
     </form>
     </div>
     <div class='alert alert-danger' *ngIf="errorMessage">

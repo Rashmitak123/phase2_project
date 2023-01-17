@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { OnInit, OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -47,15 +47,12 @@ export class VegesComponent implements OnInit, OnDestroy{
     this.errorMessage$=this.store.select(getError);
     this.store.dispatch(VegeActions.loadVeges());
     this.selectedVeges$=this.store.select(getCurrentVege);
-    this.filteredVeges=this.veges;
-      
+    this.filteredVeges=this.veges;  
   }
 
   ngOnDestroy(): void {
     
   }
-
-   
 
   newVege():void{
     //back to new veggie from service
@@ -72,16 +69,8 @@ export class VegesComponent implements OnInit, OnDestroy{
     return this.vege;
   }
 
-  /* addtocart(item:IVeges){
-    this.cartService.addtoCart(item);
-  } */
-
   addtocart(item: IVeges){
-
     this.cartService.addtoCart(item);
-    //this.router.navigate([this.href,'shopCart']);
-
   }
-
 
 }

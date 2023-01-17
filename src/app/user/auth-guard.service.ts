@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate{
     if(this.authService.isAdmin()){
         console.log('check for admin role')
         return true;
-    }
+    } 
     this.authService.redirectToUrl=url;
     this.router.navigate(['login']);
     return false;

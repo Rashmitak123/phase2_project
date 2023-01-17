@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { IVeges } from "src/app/veges/veges";
@@ -32,13 +32,19 @@ export class CartService{
         console.log(this.cart);
     }
 
-   /*  deleteItem(vege:IVeges){
-        const id=vege.id;
-        const comIndex=this.cart.findIndex(item=>item.id===id);
-        if(comIndex >-1){
-            this.cart.splice(comIndex,1);
-        }
-    } */
+    updateCartVege(cartVege : IVeges):void{
+      const headers= new HttpHeaders({'Content-Type':'application/json'});
+      const url= `${this.url}/${cartVege.id}`;
+      //logic to call http put method to update the product on the given url
+      this.http.put<IVeges>(url, cartVege, {headers}).subscribe(data=>{
+          console.log('update vege'+ data);
+          const foundIndex = this.cart.findIndex(item=>item.id === cartVege.id);
+            if(foundIndex > -1){
+              this.cart[foundIndex]=cartVege;
+              console.log(this.cart[foundIndex])
+            }
+          })  
+    }
 
     removeCartItem(vege:IVeges){
       this.cart.map((a:IVeges, index:any)=>{
@@ -57,7 +63,7 @@ export class CartService{
     getTotalPrice():number{
       let grandTotal=0;
       this.cart.map((c:IVeges)=>{
-        grandTotal+=c.price;
+        grandTotal+=c.price*c.qty;
       })
       return grandTotal;
     }

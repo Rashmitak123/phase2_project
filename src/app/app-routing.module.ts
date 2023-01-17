@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'payment', 
     component:PaymentComponent,
-    //canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {path: 'thankyou', component:ThankyouComponent},
   {path:'**', component:PageNotFoundComponent}
