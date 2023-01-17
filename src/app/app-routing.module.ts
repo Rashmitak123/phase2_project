@@ -11,6 +11,7 @@ import { VegesComponent } from './veges/veges.component';
 import { CartComponent } from './cart/cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PaymentComponent } from './payment/payment.component';
+import { ThankyouComponent } from './thankyou/thankyou.component';
 
 const routes: Routes = [
   {path:'',pathMatch:'full', redirectTo:'home'},
@@ -34,8 +35,9 @@ const routes: Routes = [
   {
     path: 'payment', 
     component:PaymentComponent,
-    canActivate:[AuthGuard]
+    //canActivate:[AuthGuard]
   },
+  {path: 'thankyou', component:ThankyouComponent},
   {path:'**', component:PageNotFoundComponent}
 ];
 

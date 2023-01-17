@@ -31,6 +31,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ToastrModule } from 'ngx-toastr';
 //import { RequestRespInterceptor } from './user/auth.interceptor';
 import { PaymentComponent } from './payment/payment.component';
+import { ThankyouComponent } from './thankyou/thankyou.component';
 //import { FilterPipe } from './filter.pipe';
 //import { Ng2SearchPipeModule } from 'ng2-search-filter';
 //import { VegesAddComponent } from './veges/veges-add.component';
@@ -49,6 +50,7 @@ import { PaymentComponent } from './payment/payment.component';
  //   CartComponent,
     PageNotFoundComponent,
     PaymentComponent,
+    ThankyouComponent,
  //   FilterPipe,
  //   VegesComponent,
  //   VegesAddComponent

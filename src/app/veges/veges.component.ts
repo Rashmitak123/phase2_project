@@ -38,9 +38,6 @@ export class VegesComponent implements OnInit, OnDestroy{
          private cartService:CartService,
          private router:Router,
          private store:Store<State>){}
-  /* constructor(private vegeService:VegesService,
-    private router:Router,
-    private store:Store<State>){} */
   
   ngOnInit(): void {
     this.href=this.router.url;

@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit{
          if(sessionStorage.getItem('isLogged')==='true'){
           this.isLoggedIn=true;
         } 
-        console.log(this.isLoggedIn, 'from init of menu ') 
+        console.log(this.isLoggedIn, 'from init of navbar ') 
     }
   
     logOut():void{

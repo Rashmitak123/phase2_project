@@ -28,7 +28,7 @@
     padding: 12px 72px;
     border-radius: 3px !important;
 }
-thead, tbody > * {
+thead, tbody {
     width: 100%;
   }
 
@@ -37,6 +37,3 @@ img{
     height: 100px;
 }
 
-.empty{
-    text-align: center;
-}

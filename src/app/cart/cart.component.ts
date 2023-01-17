@@ -25,15 +25,16 @@ export class CartComponent implements OnInit{
  // this.veges=this.cartService.getVeges();
   }
 
-  /*  removeItem(item: IVeges){
-    this.cartService.removeCartItem(item);
-  } */
-
   emptycart(){
     this.cartService.emptyCart();
   } 
 
   deleteItem(item:IVeges){
     this.cartService.removeCartItem(item);
+  }
+
+  inc(vege:IVeges){
+    //vege.qty++;
+    console.log(vege);
   }
 }

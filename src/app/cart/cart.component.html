@@ -20,7 +20,15 @@
                             <td>{{vege.name}}</td>
                             <td><img src="{{vege.image}}"></td>
                             <td>{{vege.stores}}</td>
-                            <td>{{vege.qty}}</td>
+                            <td>
+                                <button type="button" class="btn" (click)="inc(vege)">
+                                    <strong>+</strong>
+                                </button>
+                                {{vege.qty}}
+                                <button type="button" class="btn">
+                                    <strong>-</strong>
+                                </button>
+                            </td>
                             <td>{{vege.price | currency:'INR'}}</td>
                             <!-- <td><input type="number" [(ngModel)]="vege.qty" style="width: 40px;"></td> -->
                             <td>
