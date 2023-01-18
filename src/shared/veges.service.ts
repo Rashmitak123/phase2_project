@@ -50,7 +50,8 @@ errorHandler=(err:any)=>{
         price:0,
         stores:Stores.store1,
         image:'\\assets\\images\\s1.jpg',
-        qty:0
+        qty:0,
+        total: 0
     };
   }
 

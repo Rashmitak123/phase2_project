@@ -26,10 +26,21 @@ export class CartService{
     }
 
     addtoCart(vege:IVeges){
-        this.cart.push(vege);
-        this.vegeList.next(this.cart);
-        this.getTotalPrice();
-        console.log(this.cart);
+
+      this.vegeList.next(this.cart);
+
+      const exist=this.cart.find(({name})=>name===vege.name);
+
+      if(!exist){
+
+        this.cart.push({...vege,qty:1})
+
+        return
+
+      }
+
+      exist.qty +=1;
+
     }
 
     updateCartVege(cartVege : IVeges):void{
@@ -60,6 +71,8 @@ export class CartService{
       this.vegeList.next(this.cart);
     }
 
+    
+    
     getTotalPrice():number{
       let grandTotal=0;
       this.cart.map((c:IVeges)=>{

@@ -9,13 +9,19 @@ import * as VegeActions from './veges.actions';
 export class VegeEffects {
   constructor(private actions$: Actions, private vegeService: VegesService) { }
 
+  //run this code when a loadVeges action is dispatched
   loadVeges$ = createEffect(() => {
+    //returning action stream of ngrx
     return this.actions$
       .pipe(
+        //we are listening of type loadVege
         ofType(VegeActions.loadVeges),
+        //call the getVeges method from the service, convert it to an observable
         mergeMap(() => this.vegeService.getVeges()
           .pipe(
+            //take the returned value and return a new success action
             map(veges => VegeActions.loadVegesSuccess({ veges })),
+            //if it errors.. return a new failure action containing the error
             catchError(error => of(VegeActions.loadVegesFailure({ error })))
           )
         )

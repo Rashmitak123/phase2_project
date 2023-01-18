@@ -22,7 +22,8 @@ export const getCurrentVege = createSelector(
         stores:Stores.store1,
         price:0,
         image:'',
-        qty:0
+        qty:0,
+        total:0
       };
     } else {
       return currentVegeId ? state.veges.find(v => v.id === currentVegeId) : null;

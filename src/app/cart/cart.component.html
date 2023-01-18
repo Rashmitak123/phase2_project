@@ -11,6 +11,7 @@
                             <th>StoreName</th>
                             <th>Quantity</th>
                             <th>Price</th>
+                            <th>Total</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -21,11 +22,12 @@
                             <td><img src="{{vege.image}}"></td>
                             <td>{{vege.stores}}</td>
                             <td>
-                                <span (click)="increaseQuantity(vege)"><i class="fa fa-plus"></i></span>
+                                <span (click)="incr(vege)"><i class="fa fa-plus"></i></span>
                                 <span>{{vege.qty}}</span>
-                                <span (click)="decreaseQuantity(vege)"><i class="fa fa-minus"></i></span>
+                                <span (click)="decr(vege)"><i class="fa fa-minus"></i></span>
                             </td>
                             <td>{{vege.price | currency:'INR'}}</td>
+                            <td>{{total(vege)}}</td>
                             <!-- <td><input type="number" [(ngModel)]="vege.qty" style="width: 40px;"></td> -->
                             <td>
                                 <button class="btn btn-danger"  (click)="deleteItem(vege)">Remove</button>
@@ -36,7 +38,7 @@
                             <td><button class="btn btn-danger"  (click)="emptycart()">Empty</button></td>
                             <td><button class="btn btn-primary"  routerLink="/veges">Shop More</button></td>
                             <td><button class="btn btn-success"  routerLink="/payment">Check out</button></td>
-                            <td><strong>Grand Total : {{grandTotal | currency:'INR'}}</strong></td>
+                            <td><strong>Grand Total : {{getTotalCost() | currency:'INR'}}</strong></td>
                         </tr>
                     </tbody>
                 </table>

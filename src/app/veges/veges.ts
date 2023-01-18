@@ -14,5 +14,6 @@ export interface IVeges{
     stores:Stores;
     image:string;
     qty:number;
+    total:number;
 
 }

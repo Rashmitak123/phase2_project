@@ -4,8 +4,12 @@ import { VegesState } from "./veges.state";
 import * as VegeActions from './veges.actions'
 
 export const vegeReducer = createReducer<VegesState>(
+  //supply the initial stae 
   initialState,
+    //"on" method is used to react to the specific action
+    //dispatching setCurrentVege 
   on(VegeActions.setCurrentVege, (state, action): VegesState => {
+    //return the new state
     return {
       ...state,
       currentVegeId: action.currentVegeId
@@ -26,6 +30,7 @@ export const vegeReducer = createReducer<VegesState>(
     };
   }),
 
+  //Handle successfully loded veges
   on(VegeActions.loadVegesSuccess, (state, action): VegesState => {
     return {
       ...state,
@@ -34,6 +39,7 @@ export const vegeReducer = createReducer<VegesState>(
     };
   }),
 
+  //Handle todo load failure
   on(VegeActions.loadVegesFailure, (state, action): VegesState => {
     return {
       ...state,
@@ -76,6 +82,7 @@ export const vegeReducer = createReducer<VegesState>(
     };
   }),
   
+  //Remove the veggie from the veges array 
   on(VegeActions.deleteVegeSuccess, (state, action): VegesState => {
     return {
       ...state,

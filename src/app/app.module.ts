@@ -71,6 +71,7 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
     HttpClientInMemoryWebApiModule.forRoot(InMemoryEventDbService),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([AppEffects]),
+    //allow redux debugging feature
     StoreDevtoolsModule.instrument(), 
    // Ng2SearchPipeModule, 
   ],

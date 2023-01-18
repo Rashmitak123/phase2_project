@@ -35,20 +35,39 @@ export class CartComponent implements OnInit{
     this.cartService.removeCartItem(item);
   }
 
-   @Output() emitVegeToCart:EventEmitter<IVeges>= new EventEmitter<IVeges>();
-  increaseQuantity(p:IVeges):void{
-    let index = this.veges.findIndex((vege)=> p.id === vege.id);
-    this.veges[index].qty+=1;
-    this.emitVegeToCart.emit(p);
- }
+  total(item:IVeges){
+    const total= item.qty*item.price;
+    return total;
+  }
 
- decreaseQuantity(p:IVeges):void{
-   let index = this.veges.findIndex((vege)=> p.id === vege.id);
-  
-   if(this.veges[index].qty!=0){
-     this.veges[index].qty-=1;
-     this.emitVegeToCart.emit(p);
-   }
+  getTotalCost() {
+
+ 
+
+    return this.veges.reduce((sum,item)=>sum+=item.qty * item.price,0)
+
+   
+
+}
+  incr(item:IVeges){
+
+    item.qty++;  
+
+  }
+
+  decr(item:IVeges){
+
+    if(item.qty === 0){
+
+      item.qty=0;
+
+      this.cartService.removeCartItem(item);
+
+    }else{
+
+      item.qty--;
+
+    }
 } 
 
 /* increaseQuantity(item :IVeges){
