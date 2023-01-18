@@ -12,64 +12,110 @@ import { IVeges } from '../veges/veges';
 export class NavbarComponent implements OnInit{
   
   isLoggedIn:boolean=false;
-  pageTitle:string='InstaSMart ';
+  pageTitle:string='InstaSMart';
   veges: IVeges[]=[];
+
   constructor(private router:Router,
       private authservice:AuthService,
-      private cartService:CartService){
-  console.log('menu constructor')
-}
+      private cartService:CartService){}
   
-  get userName():string{
+
+      get isLoggedInUser():boolean{
+
+        return this.authservice.isLoggedIn;
+    
+      }
+    
+    
+    
+      get userName():string{
+    
+     
+    
+      if(this.authservice.currentUser)
+    
+      return this.authservice.currentUser?.userName;
+    
+     
+    
+      return '';
+    
+     
+    
+      }
+
+
+      
+  //get userName from AuthService
+  /* get userName():string{
     if(this.authservice.currentUser)
     return this.authservice.currentUser?.userName;
     return '';
-  }
- 
-  //public totalItem:number=0;
+  } */
   
-    ngOnInit(): void {
-       /* this.cartService.getVeges()
-        .subscribe(res=>{
-          this.totalItem=res.length;
-        })   */
-        this.cartService.getVeges()
+  ngOnInit(): void {
 
-        .subscribe(res=>{
-     
-          //this.totalItem = res.length;
-     
+    this.cartService.getVeges()
+      .subscribe(res=>{
           this.veges=res;
-     
         })
-        
         console.log('menu on init');
-        this.isLoggedIn=this.authservice.isLoggedIn;
-         if(sessionStorage.getItem('isLogged')==='true'){
-          this.isLoggedIn=true;
-        } 
-        console.log(this.isLoggedIn, 'from init of navbar') 
-    }
-  
-    totalItem(){
 
-      return this.veges.reduce((sum,item)=>sum+=item.qty,0)
-  
-    }
+   this.isLoggedIn=this.authservice.isLoggedIn;
 
-    logOut():void{
-      this.authservice.logOut();
-      this.router.navigate(['/home']);
-    }
+    if(sessionStorage.getItem('isLogged')==='true'){
 
-    ngOnDestroy(): void{
-      console.log('menu destroyed');
+     this.isLoggedIn=true;
+
+   } console.log(this.isLoggedIn, 'from init of menu ');
+
     }
     
-    ngOnChanges():void{
-      console.log('menu component changes');
+   /*  this.isLoggedIn=this.authservice.isLoggedIn;
+      if(sessionStorage.getItem('isLogged')==='true'){
+          this.isLoggedIn=true;
+        } 
+        console.log(this.isLoggedIn, 'from init of navbar') */
+     
+  
+    logOut():void{
+
+      this.authservice.logOut();
+
+      this.router.navigate(['home']);
+
+    }
+    totalItem(){
+      return this.veges.reduce((sum,item)=>sum+=item.qty,0)
+    }
+
+    //after logout() router should navigate to the home page
+    /* logOut():void{
+      this.authservice.logOut();
+      this.router.navigate(['/home']);
+    } */
+
+    ngOnDestroy(): void{
+      console.log('menu destroyed')
+    }
+    
+    /* ngOnChanges():void{
       if(sessionStorage.getItem('isLogged')=='true'){
         this.isLoggedIn=true;
       }
+    } */
+
+    ngOnChanges():void{
+
+ 
+
+      console.log('menu component changes');
+
+      if(sessionStorage.getItem('isLogged')=='true'){
+
+        this.isLoggedIn=true;
+
+      }
+
     }
 }

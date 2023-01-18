@@ -10,6 +10,7 @@ export class ContactUsComponent implements OnInit{
   form: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder) { }
+
   ngOnInit(): void {
     this.form = this.fb.group({
       name: [null, [Validators.required, Validators.maxLength(10)]],
@@ -18,6 +19,8 @@ export class ContactUsComponent implements OnInit{
       comment: [null]
 });
 }
+
+//after submitting the form the values will be displayed as an alert message
 saveDetails(form: any){
   alert('Your request is in process\n\n'+ JSON.stringify(form.value,null,4));
 }

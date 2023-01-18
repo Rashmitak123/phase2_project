@@ -27,6 +27,7 @@ export class VegesComponent implements OnInit, OnDestroy{
   filterValue:any;
   href: string='';
 
+  //declared below are observables for which we will use async pipe in template, no sub/unsub
   veges$!:Observable<IVeges[]>;
   selectedVeges$!:Observable<any>;
   errorMessage$!: Observable<string>;

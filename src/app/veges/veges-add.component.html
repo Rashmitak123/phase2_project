@@ -5,31 +5,36 @@
     </div>
 
     <div class="card-body">
-    <form [formGroup]="addVege"
-     (ngSubmit)="saveVege(vege)">
+    <form [formGroup]="addVege" (ngSubmit)="saveVege(vege)">
 
       <div class="form-group">
         <label for="name">Vege Name:</label>
-        <input type="text" formControlName="name"
-        placeholder="Vegetable name"
-        (blur)="blur()"
-        name="name" class="form-control" id="name">
+        <input (blur)="blur()" type="text" formControlName="name"
+              name="name" class="form-control" id="name">
+      </div>
+      <div *ngIf="name">
+        <div *ngIf="!name.valid && (name.dirty || name.touched)">
+        <div [hidden]="!name.errors?.['required']">Name is required</div>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="price">Price:</label>
-        <input type="number" formControlName="price"
-         placeholder="price"
-         (blur)="blur()" name="price" class="form-control" id="price">
+        <input type="number" formControlName="price" placeholder="price"
+              (blur)="blur()" name="price" class="form-control" id="price">
       </div>
-
+      <div *ngIf="price">
+        <div  *ngIf="!price.valid && (price.dirty || price.touched)">
+        <div [hidden]="!price.errors?.['required']">Price is required</div>
+        </div>
+      </div>
 
       <div class="form-group">
         <label for="stores">
           Stores
         </label>
         <select (blur)="blur()" name="stores" class='form-control'
-        formControlName="stores">
+        formControlName="stores" id="sel">
           <option selected value="store1">Store 1</option>
           <option value="store2">Store 2</option>
           <option value="store3">Store 3</option>
@@ -43,11 +48,17 @@
         <input (blur)="blur()" type="text" formControlName="image"
         placeholder="Product image" name="image" class="form-control" id="image">
       </div>
+      <div *ngIf="image">
+        <div  *ngIf="!image.valid && (image.dirty || image.touched)">
+        <div [hidden]="!image.errors?.['required']">Image is required</div>
+        </div>
+        </div>
+
     <div class="btns2">
       <button class="btn btn-primary" type="button"
       (click)="deleteVege(vege)">Delete Veggie</button>
         &nbsp;
-      <button [disabled]='!addVege.valid ||!addVege.dirty' 
+      <button id="btn" [disabled]='!addVege.valid ||!addVege.dirty' 
       class="btn btn-primary">Save Veggie</button>
     </div>  
     </form>
@@ -55,4 +66,4 @@
     <div class='alert alert-danger' *ngIf="errorMessage">
       Error : {{errorMessage}}
     </div>
-  </div>
+  </div> 

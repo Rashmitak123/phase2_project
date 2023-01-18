@@ -142,7 +142,8 @@ describe('VegesService', () => {
       stores: Stores.store1,
       price: 10,
       image: "../../assets/images/tomato.jfif",
-      qty: 0
+      qty: 0,
+      total:0
       },
       {
       id: 2,
@@ -150,7 +151,8 @@ describe('VegesService', () => {
       stores: Stores.store4,
       price: 20,
       image: "../../assets/images/potato.jpg",
-      qty: 0
+      qty: 0,
+      total: 0
       }
     ]
   });
@@ -176,7 +178,8 @@ describe('VegesService', () => {
       stores:Stores.store1,
       price:30,
       image:"../../assets/images/carroth.jpg",
-      qty:0
+      qty:0,
+      total:0
    };
     const fn=spyOn(service, 'getVegeById').and.returnValue(of(vege));
     service.getVegeById(111).subscribe(res=>{response=res;expect(response).toEqual(vege);});
@@ -189,7 +192,8 @@ it('createVege should post veggie and return that new veggie as data',()=>{
     stores:Stores.store4,
     price: 10,
     image:"../../assets/images/corn.jpg",
-    qty:3
+    qty:3,
+    total:0
    };
   let vege2 ={
     "id":4,
@@ -197,7 +201,8 @@ it('createVege should post veggie and return that new veggie as data',()=>{
     "stores":Stores.store4,
     "price": 10,
     "image":"../../assets/images/tomato.jpg",
-    "qty":2
+    "qty":2,
+    "total":0
    };
   veges =[...veges,vege1];
    service.createVege(vege1).subscribe(resp=>expect(resp).toEqual(vege1) )
@@ -214,7 +219,8 @@ it('createVege should post veggie and return that new veggie as data',()=>{
       "stores":Stores.store4,
       "price": 10,
       "image":"../../assets/images/tomato.jpg",
-      "qty":2
+      "qty":2,
+      "total":0
      };
      service.updateVege(vege2).subscribe(resp=>expect(resp).toEqual(vege2) )
      const req = httpMock.expectOne(`${service.url}/${vege2.id}`);

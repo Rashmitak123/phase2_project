@@ -28,6 +28,7 @@ export class VegeEffects {
       );
   });
 
+  //run this code when a updateVeges action is dispatched
   updateVege$ = createEffect(() => {
     return this.actions$
       .pipe(
@@ -42,6 +43,7 @@ export class VegeEffects {
       );
   });
 
+  //run this code when a createVeges action is dispatched
   createVege$ = createEffect(() => {
     return this.actions$
       .pipe(
@@ -56,6 +58,7 @@ export class VegeEffects {
       );
   });
 
+  //run this code when a deleteVeges action is dispatched
   deleteVege$ = createEffect(() => {
     return this.actions$
       .pipe(

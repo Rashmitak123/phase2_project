@@ -72,7 +72,52 @@ export class InMemoryEventDbService implements InMemoryDbService{
         "image":"../../assets/images/cucumber.jpeg",
         "qty":1,
         "total": 0
-    }];
+    },
+    {
+      "id":118,
+      "name":"Onion",
+      "price":30,
+      "stores":Stores.store1,
+      "image":"../../assets/images/onions.webp",
+      "qty":1,
+      "total": 0
+  }, 
+  {
+    "id":119,
+    "name":"Peas",
+    "price":20,
+    "stores":Stores.store5,
+    "image":"../../assets/images/peas.jfif",
+    "qty":1,
+    "total": 0
+},
+{
+  "id":120,
+  "name":"Radish",
+  "price":30,
+  "stores":Stores.store3,
+  "image":"../../assets/images/radish.webp",
+  "qty":1,
+  "total": 0
+},
+{
+  "id":121,
+  "name":"Spinach",
+  "price":10,
+  "stores":Stores.store4,
+  "image":"../../assets/images/spinach.png",
+  "qty":1,
+  "total": 0
+},
+{
+  "id":122,
+  "name":"Garlic",
+  "price":50,
+  "stores":Stores.store2,
+  "image":"../../assets/images/garlic.jpg",
+  "qty":1,
+  "total": 0
+}];
 
     const users:User[]=[{ 
         id:1,

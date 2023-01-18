@@ -64,18 +64,21 @@ ngOnInit() {
     image:['',[Validators.required]],
      });
  
+     //watch for changes to the currently selected veggie
      this.vege$ = this.store.select(getCurrentVege)
        .pipe(
          tap(currentVege => this.displayVege(currentVege))
        );
   this.vege$.subscribe(resp=>this.vege=resp);
+  //watch for the value changes for validation
   this.addVege.valueChanges.subscribe(
        () => this.displayMessage =
        this.genericValidator.processMessages(this.addVege)
      );
  
-     this.addVege.valueChanges.
-     subscribe(()=>this.displayMessage=this.genericValidator.processMessages(this.addVege));
+     //when the vege is selected from the vege list, it should be desplayed on the form
+     this.addVege.valueChanges
+     .subscribe(()=>this.displayMessage=this.genericValidator.processMessages(this.addVege));
    }
 
    get id(){
@@ -102,6 +105,7 @@ ngOnInit() {
    displayVege(vegeParam:IVeges |null |undefined):void{
     this.vege = vegeParam;
     if(this.vege){
+      //reset the form to its original
      this.addVege.reset();
      if(this.vege.id==0){
        this.pageTitle='Add Veggie';
@@ -124,6 +128,8 @@ ngOnInit() {
   saveVege(originalVege:IVeges):void{
      if(this.addVege.valid){
        if(this.addVege.dirty){
+        //we are copying data from the form
+        //it ensures that values are not lost, ids are retained
          const vege={...originalVege,...this.addVege.value};
        if(vege.id==0){
          this.store.dispatch(VegeActions.createVege({vege}));
@@ -137,6 +143,7 @@ ngOnInit() {
  }
 }
 
+//validating on blur, if user tabs out throught the form fields
    blur():void{
    this.displayMessage=this.genericValidator.processMessages(this.addVege);
    }

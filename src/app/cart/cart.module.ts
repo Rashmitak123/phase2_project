@@ -9,8 +9,10 @@ import { CartComponent } from './cart.component';
    CartComponent
 ],
   imports: [
-    CommonModule,FormsModule,ReactiveFormsModule,
-    CartRoutingModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CartRoutingModule
 ],  
 })
 

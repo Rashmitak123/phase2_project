@@ -22,13 +22,12 @@
                             <td><img src="{{vege.image}}"></td>
                             <td>{{vege.stores}}</td>
                             <td>
-                                <span (click)="incr(vege)"><i class="fa fa-plus"></i></span>
-                                <span>{{vege.qty}}</span>
-                                <span (click)="decr(vege)"><i class="fa fa-minus"></i></span>
+                                <span (click)="increaseQuantity(vege)"><i class="fa fa-plus"></i></span>
+                                <input type="text" value="{{vege.qty}}" style="width: 25px;">
+                                <span (click)="decreaseQuantity(vege)"><i class="fa fa-minus"></i></span>
                             </td>
                             <td>{{vege.price | currency:'INR'}}</td>
-                            <td>{{total(vege)}}</td>
-                            <!-- <td><input type="number" [(ngModel)]="vege.qty" style="width: 40px;"></td> -->
+                            <td>{{total(vege) | currency:'INR'}}</td>
                             <td>
                                 <button class="btn btn-danger"  (click)="deleteItem(vege)">Remove</button>
                             </td>

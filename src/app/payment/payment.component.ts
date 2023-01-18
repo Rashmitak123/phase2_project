@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { CartService } from 'src/shared/cart.service';
 import { IVeges } from '../veges/veges';
 
@@ -18,5 +19,9 @@ export class PaymentComponent implements OnInit{
      this.veges = res;
      this.grandTotal = this.cartService.getTotalPrice();
    })
+  }
+
+  onSubmit(pForm:NgForm){
+    alert('payment success');
   }
 }

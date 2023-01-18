@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+/* import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthService } from "./auth.service";
@@ -9,12 +9,14 @@ import { AuthService } from "./auth.service";
 export class AuthGuard implements CanActivate{
     constructor(private authService:AuthService,
                 private router:Router){}
+
   canActivate(route: ActivatedRouteSnapshot, 
             state: RouterStateSnapshot): boolean {
       return this.checkLoggedIn(state.url);
 }
 
  checkLoggedIn(url:string):boolean{
+    //this route will be active only for admin users
     if(this.authService.isAdmin()){
         console.log('check for admin role')
         return true;
@@ -24,4 +26,56 @@ export class AuthGuard implements CanActivate{
     this.router.navigate(['login']);
     return false;
  }
+} */
+
+
+
+
+import { Injectable } from "@angular/core";
+
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+
+import { Observable } from "rxjs";
+
+import { AuthService } from "./auth.service";
+
+
+
+@Injectable({
+
+    providedIn:'root'
+
+})
+
+export class AuthGuard implements CanActivate{
+    //isLoggedIn():boolean=false;
+
+    constructor(private authService:AuthService,private router:Router){}
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
+      return this.checkLoggedIn(state.url);
+
+}
+
+ checkLoggedIn(url:string):boolean{
+
+    if(this.authService.isAdmin() || this.authService.isLoggedIn){
+
+        console.log('Auth guard check for admin role');
+
+        return true;
+
+    }
+
+    this.authService.redirectToUrl=url;
+
+    this.router.navigate(['/login']);
+
+    return false;
+
+ }
+
+
+
 }

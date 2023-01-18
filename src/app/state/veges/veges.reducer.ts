@@ -66,6 +66,7 @@ export const vegeReducer = createReducer<VegesState>(
     };
   }),
   
+  //after a create the currentVege is the new vege
   on(VegeActions.createVegesSuccess, (state, action): VegesState => {
     return {
       ...state,
@@ -83,6 +84,7 @@ export const vegeReducer = createReducer<VegesState>(
   }),
   
   //Remove the veggie from the veges array 
+  //after delete, the currentVege is null
   on(VegeActions.deleteVegeSuccess, (state, action): VegesState => {
     return {
       ...state,
