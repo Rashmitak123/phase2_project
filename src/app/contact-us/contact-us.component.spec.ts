@@ -16,8 +16,10 @@ describe('ContactUsComponent', () => {
         FormsModule]
     })
     .compileComponents();
-
+//testBed create a fixture
+//fixture is the wrapper of both class reference(ts) and template html reference(html elmt)
     fixture = TestBed.createComponent(ContactUsComponent);
+    //to access raw component
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

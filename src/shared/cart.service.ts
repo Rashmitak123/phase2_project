@@ -26,35 +26,13 @@ export class CartService{
     }
 
     addtoCart(vege:IVeges){
-
       this.vegeList.next(this.cart);
-
       const exist=this.cart.find(({name})=>name===vege.name);
-
       if(!exist){
-
         this.cart.push({...vege,qty:1})
-
         return
-
       }
-
       exist.qty +=1;
-
-    }
-
-    updateCartVege(cartVege : IVeges):void{
-      const headers= new HttpHeaders({'Content-Type':'application/json'});
-      const url= `${this.url}/${cartVege.id}`;
-      //logic to call http put method to update the product on the given url
-      this.http.put<IVeges>(url, cartVege, {headers}).subscribe(data=>{
-          console.log('update vege'+ data);
-          const foundIndex = this.cart.findIndex(item=>item.id === cartVege.id);
-            if(foundIndex > -1){
-              this.cart[foundIndex]=cartVege;
-              console.log(this.cart[foundIndex])
-            }
-          })  
     }
 
     removeCartItem(vege:IVeges){

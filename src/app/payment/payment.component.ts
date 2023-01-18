@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { CartService } from 'src/shared/cart.service';
 import { IVeges } from '../veges/veges';
 
@@ -9,6 +9,7 @@ import { IVeges } from '../veges/veges';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit{
+  pForm: FormGroup = new FormGroup({});
   public veges : IVeges[] = [];
   public grandTotal !: number;
   

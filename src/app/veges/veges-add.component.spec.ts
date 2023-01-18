@@ -130,7 +130,7 @@ describe('VegesAddComponent', () => {
     component.addVege.controls['image'].setValue('../../assets/images/potatos.jpg');
     component.addVege.controls['stores'].setValue('store1');  
     fixture.detectChanges();
-    expect(btn.disabled).toBe(true );
+    expect(btn.disabled).toBe(true);
    })
 });
  

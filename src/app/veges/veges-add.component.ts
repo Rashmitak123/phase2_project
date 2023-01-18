@@ -48,6 +48,7 @@ export class VegesAddComponent implements OnInit, OnDestroy {
         required:'Image is required'
       }
       };
+      
       this.genericValidator=new GenericValidator(this.validationMessages);
 }
 

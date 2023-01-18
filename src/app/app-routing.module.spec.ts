@@ -72,6 +72,7 @@ describe('AppComponent', () => {
   });
 
   /* --- Redirects to Home ---*/
+  //fakeAsync lets us test async code synchonously
    it(`navigate to "" redirects you to /home`, fakeAsync(() => {
     router.navigate([""]).then(() => {
       expect(location.path()).toBe("/home");
@@ -84,20 +85,6 @@ describe('AppComponent', () => {
       expect(location.path()).toBe("/home");
     });
   }));
-
-  /* --- Navigate to Fashion Page ---*/
-  it(`navigate to "Fashion Page" takes you to /fashion`, fakeAsync(() => {
-    router.navigate(["/fashion"]).then(() => {
-      expect(location.path()).toBe("/fashion");
-    });
-  }));  
-
-  /* --- Navigate to Electronic Page ---*/
-  it(`navigate to "Electronic Page" takes you to /electronic`, fakeAsync(() => {
-    router.navigate(["/electronic"]).then(() => {
-      expect(location.path()).toBe("/electronic");
-    });
-  }));  
 
   /* --- Navigate to About Us Page ---*/
   it(`navigate to "about Us Page" takes you to /about`, fakeAsync(() => {
@@ -128,9 +115,9 @@ describe('AppComponent', () => {
   }));
 
   /* --- Navigate Shopping Cart Page ---*/
-  it(`navigate to "Shopping Cart Page" takes you to /shopCart`, fakeAsync(() => {
-    router.navigate(["/home/shopCart"]).then(() => {
-      expect(location.path()).toBe("/home/shopCart");
+  it(`navigate to "Shopping Cart Page" takes you to /cart`, fakeAsync(() => {
+    router.navigate(["/home/cart"]).then(() => {
+      expect(location.path()).toBe("/home/cart");
     });
   }));  
 

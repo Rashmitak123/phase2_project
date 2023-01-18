@@ -19,103 +19,48 @@ export class NavbarComponent implements OnInit{
       private authservice:AuthService,
       private cartService:CartService){}
   
-
       get isLoggedInUser():boolean{
-
         return this.authservice.isLoggedIn;
-    
       }
-    
-    
-    
+
+      //get userName from AuthService
       get userName():string{
-    
-     
-    
-      if(this.authservice.currentUser)
-    
-      return this.authservice.currentUser?.userName;
-    
-     
-    
-      return '';
-    
-     
-    
+        if(this.authservice.currentUser)  
+        return this.authservice.currentUser?.userName;
+        return '';
       }
 
-
-      
-  //get userName from AuthService
-  /* get userName():string{
-    if(this.authservice.currentUser)
-    return this.authservice.currentUser?.userName;
-    return '';
-  } */
-  
   ngOnInit(): void {
-
     this.cartService.getVeges()
       .subscribe(res=>{
           this.veges=res;
         })
-        console.log('menu on init');
 
-   this.isLoggedIn=this.authservice.isLoggedIn;
-
-    if(sessionStorage.getItem('isLogged')==='true'){
-
-     this.isLoggedIn=true;
-
-   } console.log(this.isLoggedIn, 'from init of menu ');
-
-    }
-    
-   /*  this.isLoggedIn=this.authservice.isLoggedIn;
+       this.isLoggedIn=this.authservice.isLoggedIn;
+       // get the value of the specific session storage item
+        //getItem returns null if item does not exist
       if(sessionStorage.getItem('isLogged')==='true'){
-          this.isLoggedIn=true;
-        } 
-        console.log(this.isLoggedIn, 'from init of navbar') */
-     
+       this.isLoggedIn=true;
+   } 
+   console.log(this.isLoggedIn, 'from init of menu ');
+  }
   
+     //after logout() router should navigate to the home page
     logOut():void{
-
       this.authservice.logOut();
-
       this.router.navigate(['home']);
-
     }
+
     totalItem(){
       return this.veges.reduce((sum,item)=>sum+=item.qty,0)
-    }
-
-    //after logout() router should navigate to the home page
-    /* logOut():void{
-      this.authservice.logOut();
-      this.router.navigate(['/home']);
-    } */
+    }  
 
     ngOnDestroy(): void{
-      console.log('menu destroyed')
     }
-    
-    /* ngOnChanges():void{
-      if(sessionStorage.getItem('isLogged')=='true'){
-        this.isLoggedIn=true;
-      }
-    } */
 
     ngOnChanges():void{
-
- 
-
-      console.log('menu component changes');
-
       if(sessionStorage.getItem('isLogged')=='true'){
-
         this.isLoggedIn=true;
-
       }
-
     }
 }

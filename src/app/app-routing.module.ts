@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: 'veges',
     component: VegesComponent,
-   // canActivate:[AuthGuard],
+   //canActivate:[AuthGuard],
     loadChildren:()=>import('../app/vege/vege.module').then(m=>m.VegesModule)
   },
 
