@@ -22,6 +22,10 @@ export class PaymentComponent implements OnInit{
    })
   }
 
+  checkOut(){
+    this.cartService.emptyCart();
+  }
+  
   onSubmit(pForm:NgForm){
     alert('payment success');
   }

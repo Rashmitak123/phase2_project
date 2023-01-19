@@ -45,7 +45,7 @@ describe('PaymentComponent', () => {
   });
   it('should have type text for email', () => {
     const e1 =fixture.debugElement.query(By.css('#email'));
-    expect(e1.nativeElement.getAttribute('type')).toEqual('email');
+    expect(e1.nativeElement.getAttribute('type')).toEqual('text');
   });
 
   /* Check for address */

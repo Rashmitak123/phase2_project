@@ -9,7 +9,6 @@ import { IVeges } from './veges';
 import { getCurrentVege, getError, getVeges } from '../state/veges/veges.selectors';
 import * as VegeActions from 'src/app/state/veges/veges.actions';
 import { CartService } from 'src/shared/cart.service';
-//import { CartService } from 'src/shared/cart.service';
 
 @Component({
   selector: 'app-veges',
@@ -42,7 +41,7 @@ export class VegesComponent implements OnInit, OnDestroy{
   
   ngOnInit(): void {
     this.href=this.router.url;
-    //will get initial values until the load is complete]
+    //will get initial values until the load is complete
     this.veges$=this.store.select(getVeges);
     this.veges$.subscribe(resp=>this.filteredVeges=resp);
     this.errorMessage$=this.store.select(getError);

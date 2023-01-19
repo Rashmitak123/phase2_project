@@ -60,6 +60,8 @@ export class CartComponent implements OnInit{
     }else{
       item.qty--;
     }
+
+    
 } 
 
 

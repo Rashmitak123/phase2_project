@@ -34,9 +34,9 @@
                         </tr>
                         <tr>
                             <td colspan="3"></td>
-                            <td><button class="btn btn-danger"  (click)="emptycart()">Empty</button></td>
-                            <td><button class="btn btn-primary"  routerLink="/veges">Shop More</button></td>
-                            <td><button class="btn btn-success"  routerLink="/payment">Check out</button></td>
+                            <td><button class="btn btn-danger" (click)="emptycart()">Empty</button></td>
+                            <td><button class="btn btn-primary" routerLink="/veges">Shop More</button></td>
+                            <td><button class="btn btn-success" routerLink="/payment">Check out</button></td>
                             <td><strong>Grand Total : {{getTotalCost() | currency:'INR'}}</strong></td>
                         </tr>
                     </tbody>

@@ -9,6 +9,9 @@ import { IVeges } from "src/app/veges/veges";
 
 export class CartService{
     cart: IVeges[]=[];
+    //BehaviorSubject is the subtype of observable
+    //emits only the last value of the source observable
+    //it ensures that every consumer get recent most value
     private vegeList=new BehaviorSubject<IVeges[]>([]);
     constructor(private http:HttpClient){}
     url="api/cart";
@@ -48,9 +51,7 @@ export class CartService{
       this.cart=[];
       this.vegeList.next(this.cart);
     }
-
-    
-    
+ 
     getTotalPrice():number{
       let grandTotal=0;
       this.cart.map((c:IVeges)=>{

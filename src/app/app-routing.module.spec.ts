@@ -65,7 +65,7 @@ describe('AppComponent', () => {
   });
 
   /* --- Title as InstaMart ---*/
-  it(`should have as title 'InstaSMart'`, () => {
+  it(`should have as title 'demoapp2'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('demoapp2');

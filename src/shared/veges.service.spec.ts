@@ -51,9 +51,11 @@ describe('VegesService', () => {
     expect(service).toBeTruthy();
   });
   it('should getAllVeges',
+  //controller injected into tests to allow for mocking and flushing of request
     inject([HttpTestingController,VegesService],
       (httpMock:HttpTestingController,service:VegesService)=>{
       service.getVeges().subscribe(resp=>expect(veges).toEqual(resp));
+      //expectOne(): expect that a single request has been made which matches the given URL and returns a mock
       const mockReq = httpMock.expectOne(service.url);
       expect(mockReq.cancelled).toBeFalsy();
       expect(mockReq.request.responseType).toEqual('json');

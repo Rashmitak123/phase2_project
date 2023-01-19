@@ -79,4 +79,9 @@ describe('CartService', () => {
     service.removeCartItem(vege1);  
     expect (service.cart.length).toEqual(2);
   });
+
+  it('should check for empty',()=>{
+    service.emptyCart();
+    expect (service.cart.length).toEqual(0);
+  })
 });
